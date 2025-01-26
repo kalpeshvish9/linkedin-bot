@@ -1,4 +1,7 @@
 from dependencies import *
+from session_manager import get_session
+
+driver = get_session()
 
 driver = webdriver.Chrome()
 driver.get("https://www.linkedin.com")
