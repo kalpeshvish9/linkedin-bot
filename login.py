@@ -5,10 +5,9 @@ from selenium.webdriver.common.by import By
 driver = get_session()
 
 driver = webdriver.Chrome()
-driver.get("https://www.linkedin.com")
+driver.get("https://www.linkedin.com/login")
 
-username = driver.find_element(By.ID, "session_key")
-username.send_keys(config.username)
-password = driver.find_element_by_id("session_password")
-password.send_keys(config.password)
-driver.find_element_by_class_name("sign-in-form__submit-button").click()
+username = wait.until(EC.presence_of_element_located((By.ID, "session_key")))
+password = wait.until(EC.presence_of_element_located((By.ID, "session_password")))
+submit_button = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "sign-in-form__submit-button")))
+submit_button.click()
